@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-componentos
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-componentos
+    app.kubernetes.io/part-of: test-app
+  name: test-componentos
+  namespace: test7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: test-componentos
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: test-componentos
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:test7-test-componentos
+        imagePullPolicy: Always
+        name: container-image
+        resources: {}
+status: {}
